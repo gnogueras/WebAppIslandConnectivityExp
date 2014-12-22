@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    
+    <context:component-scan base-package="ice.mvc.controller" />
+    
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">indexController</prop>
+                <prop key="islandConnectivity.htm">islandConnectivityController</prop>
+                <prop key="islandConnectivityDetails.htm">islandConnectivityController</prop>
+            </props>
+        </property>
+    </bean>
+    
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+    
+    <bean name="islandConnectivityController" class="ice.mvc.controller.IslandConnectivityController"/>
+    
+    <!-- declare beans -->  
+    <bean id="pingResultDAO" class="unused.PingResultDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>  
+ 
+    <!-- declare datasource bean -->  
+    <bean id="dataSource"  
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+        <property name="driverClassName" value="org.sqlite.JDBC" />  
+        <property name="url" value="jdbc:sqlite:/var/lib/oml2/2014-12-17T16:34:24.518Z.sq3" />  
+        <!--
+        <property name="username" value="root" />  
+        <property name="password" value="root" />  
+        -->
+    </bean>  
+
+    <!-- static resources -->
+    <mvc:annotation-driven /> 
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    
+</beans>

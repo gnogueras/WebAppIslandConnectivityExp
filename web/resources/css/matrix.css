@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 17, 2014, 2:33:43 PM
+    Author     : gerard
+*/
+
+ 
+ .matrix_body {
+     font-family: monospace;
+     line-height: 160%;
+     font-size: 18px;
+     margin: 0;
+ }
+ .matrix_table {
+     border-collapse: collapse;
+     border-spacing: 0;
+     table-layout:fixed;
+     width: fit-content;
+ }
+ .matrix_tr {
+     text-align: center;
+ }
+ .matrix_th {
+     padding: 1rem;
+     text-align: center;
+     font-weight: bold;
+ }
+
+ .content_cell {
+     padding: 1rem;
+     text-align: center;
+     border: 1px black solid;
+     height: max-content;
+     width: max-content;
+ }
+ .green_bg{
+     //background-color: forestgreen;
+     background-color:rgba(0,204,102,0.4);
+     //opacity: 0.50;
+ }
+ .amber_bg{
+     //background-color: darkorange;
+     //opacity: 0.50;
+     background-color:rgba(255,153,51,0.4);
+ }
+ .red_bg{
+     //background-color: red;
+     //opacity: 0.50;
+     background-color:rgba(255,51,51,0.4);
+ }
+  .green_bg_active{
+     //background-color: forestgreen;
+     background-color:rgba(0,204,102,1);
+     //opacity: 0.50;
+ }
+ .amber_bg_active{
+     //background-color: darkorange;
+     //opacity: 0.50;
+     background-color:rgba(255,153,51,1);
+ }
+ .red_bg_active{
+     //background-color: red;
+     //opacity: 0.50;
+     background-color:rgba(255,51,51,1);
+ }
+ .grey_bg{
+     //background-color: red;
+     //opacity: 0.50;
+     background-color:rgba(200,200,200,0.4);
+ }
+ .grey_bg_active{
+     //background-color: red;
+     //opacity: 0.50;
+     background-color:rgba(200,200,200,1);
+ }
+  .empty_cell {
+     padding: 1rem;
+     text-align: center;
+     border: 1px black solid;
+     height: max-content;
+     width: max-content;
+     background-color: rgb(112,112,112);
+ }
+ .selected_content_cell {
+     background-color: red;
+ }
+ .unselected_content_cell {
+     background-color: white;
+ }
+
+ .header_cell {
+     padding: 1rem;
+     text-align: center;
+     font-weight: bold;
+     border: 0px;
+     height: max-content;
+     width: max-content;
+ }
+ .selected_hedaer_cell {
+     color: red; 
+ }
+ .unselected_hedaer_cell {
+     color: black; 
+ } 
+ .rotated_cell_header {
+     -moz-transform:rotate(-90deg);
+     -moz-transform-origin: center;
+     -webkit-transform: rotate(-90deg);
+     -webkit-transform-origin: center;
+     -o-transform: rotate(-90deg);
+     -o-transform-origin: center;
+     //position:relative;
+     //height: 80px;
+     //width: min-content;
+     //width: 500px;
+     padding: 1rem;
+     text-align: left;
+     font-weight: bold;
+     border: 1px solid;
+     white-space: nowrap;
+     overflow: hidden;
+ }
+
